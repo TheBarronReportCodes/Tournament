@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  public players: String[];
+
+  constructor(private rosterService: RosterService) { }
 
   ngOnInit(): void {
+	this.players = ['', '', '','', '', '', '', '' ]; 
+  }
+
+  registerContestants() {
   }
 
 }
