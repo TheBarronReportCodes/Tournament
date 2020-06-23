@@ -9,12 +9,13 @@ export class RosterService {
 
   constructor() {
 	this.theContestants = [];
- }
+  }
 
   /* returns the list of registered contestants' names an
   */
-  getContestants() : String[] {
-	return this.theContestants;
+  getContestants(): String[] {
+	console.log(this.theContestants);
+	return this.theContestants;	
   }
 
   /* adds a single contestant to the registry
@@ -24,9 +25,12 @@ export class RosterService {
 		throw "player is null";
 	} else if (player.trim() == '') {
 		throw "player is empty";
-	} else if (this.theContestants.includes(player.valueOf())) {
-		throw "player is duplicate";
-	} 
+	}
+	for(var contestant in this.theContestants){
+		if (this.theContestants[contestant].toLowerCase() == player.toLowerCase()) {
+			throw "player is duplicate";
+		}
+	}
 	this.theContestants.push(player);
   }
 

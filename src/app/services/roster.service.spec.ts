@@ -26,7 +26,7 @@ describe('RosterService', () => {
     			expect(function () {
 				service.addContestant('Tom');
 				service.addContestant('Jennifer');
-    				service.addContestant('Tom');
+    				service.addContestant('tom');
     			}).toThrow('player is duplicate');
   		});
   	});
@@ -56,6 +56,21 @@ describe('RosterService', () => {
 			expect(function () {
 				service.addContestant('     ');
 			}).toThrow('player is empty');
+		});
+	});
+
+	describe('One contestant added (No Errors)', () => {
+		it('should add one contestant', () => {
+			service.addContestant('Onitsuka');
+			expect(function () {
+				service.getContestants();
+			}).toEqual('Onitsuka');
+		});
+		it('should add one contestant test two', () => {
+			expect(function () {
+				service.addContestant('Nujabes');
+				service.getContestants();
+			}).toEqual('Nujabes');
 		});
 	});
 });
