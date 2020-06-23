@@ -5,6 +5,8 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { RosterService } from './services/roster.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RosterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
