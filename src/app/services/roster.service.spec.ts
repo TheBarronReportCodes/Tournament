@@ -108,5 +108,19 @@ describe('RosterService', () => {
 			expect(result).toEqual(['Kim Possible', 'Ron Stoppable', 'Lilo', 'Stitch']);
 		});
 
+		it('should add eight contestants', () => {
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			service.addContestant('Hunter');
+			service.addContestant('Mr. Vandemar');
+			service.addContestant('Mr. Croup');
+			service.addContestant('Islington');
+			var result = service.getContestants();
+
+			expect(result).toEqual(['Marquis De Carabas', 'Door', 'Richard Mayhew', 'Jessica', 'Hunter', 'Mr. Vandemar', 'Mr. Croup', 'Islington']);
+		});
+
 	});
 });
