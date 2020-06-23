@@ -25,7 +25,7 @@ export class RosterService {
 	} else if (player == '') {
 		throw "player is empty";
 	} else if (this.theContestants.includes(player.valueOf())) {
-		throw "player is null";
+		throw "player is duplicate";
 	} 
 	this.theContestants.push(player);
   }
