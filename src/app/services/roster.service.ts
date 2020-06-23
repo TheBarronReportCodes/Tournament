@@ -4,17 +4,29 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RosterService {
+  var theContestants: String[];
 
-  constructor() { }
+  constructor() {
+	this.theContestants = [];
+ }
 
   /* returns the list of registered contestants' names an
   */
   getContestants() {
+	return this.theContestants;
   }
 
   /* adds a single contestant to the registry
   */
   addContestant(player: String) {
+	if (player == null) {
+		throw "player is null";
+	} else if (player == '') {
+		throw "player is empty";
+	} else if (this.theContestants.includes(player.valueOf())) {
+		throw "player is null";
+	} 
+	this.theContestants.push(player);
   }
 
 }
