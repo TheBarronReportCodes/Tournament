@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class RosterService {
-  var theContestants: String[];
+
+  private theContestants: String[];
 
   constructor() {
 	this.theContestants = [];
@@ -12,7 +13,7 @@ export class RosterService {
 
   /* returns the list of registered contestants' names an
   */
-  getContestants() {
+  getContestants() : String[] {
 	return this.theContestants;
   }
 
