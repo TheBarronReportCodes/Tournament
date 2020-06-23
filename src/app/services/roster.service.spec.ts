@@ -16,61 +16,76 @@ describe('RosterService', () => {
 
 	describe('Duplicate names', () => {
   		it('should not allow duplicate names', () => {
-    			expect(function () {
-			service.addContestant('Tito');
-    			service.addContestant('Tito');
-    			}).toThrow('player is duplicate');	
+			var result = function () {
+				service.addContestant('Tito');
+    				service.addContestant('Tito');
+    			}
+
+    			expect(result).toThrow('player is duplicate');	
 		});
 
   		it('should not allow duplicate names test 2', () => {
-    			expect(function () {
+			var result = function () {
 				service.addContestant('Tom');
 				service.addContestant('Jennifer');
     				service.addContestant('tom');
-    			}).toThrow('player is duplicate');
+    			}
+
+    			expect(result).toThrow('player is duplicate');
   		});
   	});
 
 	describe('Null names', () => {
 		it('should not allow null names', () => {
-			expect(function () {
+			var result = function () {
 				service.addContestant(null);
-			}).toThrow('player is null');
+			}
+
+			expect(result).toThrow('player is null');
 		});
+
 		it('should not allow null names test 2', () => {
-			expect(function () {
+			var result = function () {
 				service.addContestant('Tom');
 				service.addContestant('Jennifer');
     				service.addContestant(null);
-			}).toThrow('player is null');
+			}
+
+			expect(result).toThrow('player is null');
 		});
 	});
 
 	describe('Empty names', () => {
 		it('should not allow empty names', () => {
-			expect(function () {
+			var result = function () {
 				service.addContestant('');
-			}).toThrow('player is empty');
+			}
+
+			expect(result).toThrow('player is empty');
 		});
+
 		it('should not allow empty names test 2', () => {
-			expect(function () {
+			var result = function () {
 				service.addContestant('     ');
-			}).toThrow('player is empty');
+			}
+
+			expect(result).toThrow('player is empty');
 		});
 	});
 
 	describe('One contestant added (No Errors)', () => {
-		it('should add one contestant', () => {
+		it('should add one contestant', () => {	
 			service.addContestant('Onitsuka');
-			expect(function () {
-				service.getContestants();
-			}).toEqual('Onitsuka');
+			var result = service.getContestants();
+
+			expect(result).toEqual(['Onitsuka']);
 		});
+
 		it('should add one contestant test two', () => {
-			expect(function () {
-				service.addContestant('Nujabes');
-				service.getContestants();
-			}).toEqual('Nujabes');
+			service.addContestant('Nujabes');
+			var result = service.getContestants();
+
+			expect(result).toEqual(['Nujabes']);
 		});
 	});
 });

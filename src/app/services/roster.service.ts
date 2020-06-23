@@ -14,7 +14,6 @@ export class RosterService {
   /* returns the list of registered contestants' names an
   */
   getContestants(): String[] {
-	console.log(this.theContestants);
 	return this.theContestants;	
   }
 
