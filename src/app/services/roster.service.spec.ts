@@ -88,4 +88,25 @@ describe('RosterService', () => {
 			expect(result).toEqual(['Nujabes']);
 		});
 	});
+
+	describe('Several contestants added (No Errors)', () => {
+		it('should add two contestant', () => {	
+			service.addContestant('Ash');
+			service.addContestant('Pikachu');
+			var result = service.getContestants();
+
+			expect(result).toEqual(['Ash', 'Pikachu']);
+		});
+
+		it('should add four contestants', () => {
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			var result = service.getContestants();
+
+			expect(result).toEqual(['Kim Possible', 'Ron Stoppable', 'Lilo', 'Stitch']);
+		});
+
+	});
 });
