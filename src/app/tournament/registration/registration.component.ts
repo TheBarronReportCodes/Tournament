@@ -32,7 +32,7 @@ export class RegistrationComponent implements OnInit {
 			this.message = this.rosterService.getContestants().toString();
 		} else {
 			this.message = "Roster can only be 2, 4, or 8 players"
-		}
+		}  
 	}
 	catch(err) {
 		this.message = err;
