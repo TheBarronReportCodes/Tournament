@@ -3,10 +3,14 @@
 <div *ngIf="message">{{ message }}</div>
 <div class="form-group">
 	<form (ngSubmit)="registerContestants()">
+		<div *ngFor="let player of players; index as playerSpot; trackBy: trackByPlayerIndex">
 			<input type="text" 
-			       name="playerNameSpot0"
-			       [(ngModel)]="players[0]">
+			       placeholder="Contestant {{ playerSpot }}"
+			       name="playerNameSpot{{ playerSpot }}"
+			       [(ngModel)]="players[playerSpot]">
 			<br>
+		</div>
+<!--
 			<input type="text" 
 			       name="playerNameSpot1"
 			       [(ngModel)]="players[1]">
@@ -35,6 +39,7 @@
 			       name="playerNameSpot7"
 			       [(ngModel)]="players[7]">
 			<br>
+-->
 	<button type="submit">Register Contestants</button>
 	</form>
 </div>
