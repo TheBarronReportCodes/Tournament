@@ -5,13 +5,11 @@
 	<form (ngSubmit)="registerContestants()">
 			<input type="text" 
 			       name="playerName"
-			       [value]="players[0]"
-			       (input)="players[0]=$event.target.value">
+			       [(ngModel)]="players[0]">
 			<br>
 			<input type="text" 
-			       name="playerName"
-			       [value]="players[0]"
-			       (input)="players[0]=$event.target.value">
+			       name="playerName1"
+			       [(ngModel)]="players[1]">
 			<br>
 	<button type="submit">Register Contestants</button>
 	</form>
