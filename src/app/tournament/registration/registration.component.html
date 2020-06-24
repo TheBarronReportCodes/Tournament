@@ -3,10 +3,10 @@
 <div *ngIf="message">{{ message }}</div>
 <div class="form-group">
 	<form (ngSubmit)="registerContestants()">
-		<div *ngFor="let player of players">
-		<input type="text" 
-		       placeholder="contestants">
-		<br>
+		<div *ngFor="let player of players; index as playerSpot; trackBy: trackByPlayerIndex">
+			<input type="text" 
+		       	       placeholder="Contestant {{playerSpot}}">
+			<br>
 		</div>
 	</form>
 </div>
