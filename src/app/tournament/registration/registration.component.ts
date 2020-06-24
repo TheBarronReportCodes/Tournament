@@ -21,18 +21,24 @@ export class RegistrationComponent implements OnInit {
   /* looks through the players and adds any non-empty player names to the RosterService
   */
   registerContestants() {
-	for (let player in this.players) {
-		if (this.players[player].trim() == '') {
-			continue;
-		} 
-		this.rosterService.addContestant(this.players[player]);
+	try {
+		for (let player in this.players) {
+			if (this.players[player].trim() == '') {
+				continue;
+			} 
+			this.rosterService.addContestant(this.players[player]);
+		}
+		if (this.rosterService.getContestants().length == 2  || this.rosterService.getContestants().length == 4 || this.rosterService.getContestants().length == 8) {
+			this.message = this.rosterService.getContestants().toString();
+		} else {
+			this.message = "Roster can only be 2, 4, or 8 players"
+		}
+	}
+	catch(err) {
+		this.message = err;
 	}
 
-	if (this.rosterService.getContestants().length == 2  || this.rosterService.getContestants().length == 4 || this.rosterService.getContestants().length == 8) {
-		this.message = this.rosterService.getContestants().toString();
-	} else {
-		this.message = "Roster can only be 2, 4, or 8 players"
-	}
+
   }
 
   /* tracks players by index number to deal with primitive array
