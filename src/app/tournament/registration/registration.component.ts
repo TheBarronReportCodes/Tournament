@@ -14,18 +14,18 @@ export class RegistrationComponent implements OnInit {
   constructor(private rosterService: RosterService) { }
 
   ngOnInit(): void {
-	this.players = ['', '', '','', '', '', '', '' ]; 
+	this.players = ['test', '', '','', '', '', '', '']; 
 	this.message = null;
   }
 
   /* looks through the players and adds any non-empty player names to the RosterService
   */
   registerContestants() {
-	for (var player in this.players) {
-		if (player.trim() == '') {
+	for (let player in this.players) {
+		if (this.players[player].trim() == '') {
 			continue;
 		} 
-		this.rosterService.addContestant(player);
+		this.rosterService.addContestant(this.players[player]);
 	}
 
 	if (this.rosterService.getContestants().length == 2  || this.rosterService.getContestants().length == 4 || this.rosterService.getContestants().length == 8) {
