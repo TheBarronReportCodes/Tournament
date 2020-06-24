@@ -1,1 +1,9 @@
-<p>registration works!</p>
+<h1>Register Players</h1>
+
+<div *ngIf="message">{{ message }}</div>
+<div class="form-group">
+	<form (ngSubmit)="registerContestants()">
+		<input type="text" 
+		       placeholder="contestants">
+	</form>
+</div>
