@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RosterService } from '../../services/roster.service';
 
 @Component({
   selector: 'app-registration',
