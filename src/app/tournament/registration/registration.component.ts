@@ -34,4 +34,10 @@ export class RegistrationComponent implements OnInit {
 	}
   }
 
+  /* tracks players by index number to deal with primitive array
+  */
+  trackByPlayerIndex(index: any, item: any) {
+	return index;
+  }
+
 }
