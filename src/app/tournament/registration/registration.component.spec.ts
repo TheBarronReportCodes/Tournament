@@ -11,7 +11,8 @@ describe('RegistrationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ RegistrationComponent ],
-      providers: [ RosterService ]
+      providers: [ RosterService ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   }));
