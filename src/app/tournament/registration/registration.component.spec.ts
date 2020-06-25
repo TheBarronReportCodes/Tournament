@@ -27,8 +27,16 @@ describe('RegistrationComponent', () => {
     			expect(component).toBeTruthy();
   		});
 
-    		it('should load players on init', () => {
+    		it('should load array of empty strings', () => {
+    			expect(component.players).toEqual(['','','','','','','','']);
+  		});
+
+    		it('should load players of length 8 on init', () => {
     			expect(component.players.length).toEqual(8);
+  		});
+
+    		it('should load message field as null', () => {
+    			expect(component.message).toEqual(null);
   		});
 	});
 
