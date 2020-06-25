@@ -53,7 +53,7 @@ describe('RegistrationComponent', () => {
 
 		it('should update message to say player is duplicate with empty strings in between', () => {
 			component.players[0] = 'VeGeta';
-			component.players[8] = 'vEgEtA';
+			component.players[7] = 'vEgEtA';
 			component.registerContestants();
     			expect(component.message).toEqual('player is duplicate');
   		});
@@ -77,6 +77,18 @@ describe('RegistrationComponent', () => {
 			component.registerContestants();
     			expect(component.message).toEqual('Roster can only be 2, 4, or 8 players');
   		});
+
+		it('should update message to say information on roster size with no valid players submitted', () => {
+			component.registerContestants();
+    			expect(component.message).toEqual('Roster can only be 2, 4, or 8 players');
+  		});
+
+		it('should update message to say information on roster size with more empty players submitted', () => {
+			component.players[0] = '';
+			component.players[2] = '    ';
+			component.registerContestants();
+    			expect(component.message).toEqual('Roster can only be 2, 4, or 8 players');
+  		});
 	});
 
 	describe('Successful registration', () => {
@@ -91,6 +103,22 @@ describe('RegistrationComponent', () => {
 			component.players[7] = 'shino';
 			component.registerContestants();
     			expect(component.message).toEqual('naruto,sasuke,sakura,neji,hinata,gaara,shikamaru,shino');
+  		});
+
+		it('should return a message with the roster of four contestants with empty spaces', () => {
+			component.players[1] = 'Orochimaru';
+			component.players[3] = 'Tsunade';
+			component.players[5] = 'Jaryaiah';
+			component.players[7] = 'Sanin';
+			component.registerContestants();
+    			expect(component.message).toEqual('Orochimaru,Tsunade,Jaryaiah,Sanin');
+  		});
+
+		it('should return a message with the roster of two contestants with empty spaces', () => {
+			component.players[5] = 'chunin';
+			component.players[6] = 'jonin';
+			component.registerContestants();
+    			expect(component.message).toEqual('chunin,jonin');
   		});
 
 	});
