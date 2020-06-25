@@ -67,6 +67,16 @@ describe('RegistrationComponent', () => {
 			component.registerContestants();
     			expect(component.message).toEqual('Roster can only be 2, 4, or 8 players');
   		});
+
+		it('should update message to say information on roster size with empty space between', () => {
+			component.players[0] = 'omega shenron';
+			component.players[2] = 'CELL';
+			component.players[3] = 'yamcha';
+			component.players[5] = 'cooler';
+			component.players[7] = 'frieza';
+			component.registerContestants();
+    			expect(component.message).toEqual('Roster can only be 2, 4, or 8 players');
+  		});
 	});
 
 });
