@@ -22,12 +22,14 @@ describe('RegistrationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	describe('Constructor and Initialization', () => {
+  		it('should create', () => {
+    			expect(component).toBeTruthy();
+  		});
 
-    it('should load players on init', () => {
-    expect(component.players.length).toEqual(8);
-  });
+    		it('should load players on init', () => {
+    			expect(component.players.length).toEqual(8);
+  		});
+	});
 
 });
