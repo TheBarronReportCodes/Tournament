@@ -41,4 +41,15 @@ describe('RegistrationComponent', () => {
   		});
 	});
 
+	describe('Duplicate Names', () => {
+		it('should update message to say player is duplicate', () => {
+			component.players[0] = 'goku';
+			component.players[1] = 'gohan';
+			component.players[2] = 'GOKU';
+			component.players[3] = 'vegeta';
+			component.registerContestants();
+    			expect(component.message).toEqual('player is duplicate');
+  		});
+	});
+
 });
