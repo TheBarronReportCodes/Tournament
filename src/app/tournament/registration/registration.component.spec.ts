@@ -59,4 +59,14 @@ describe('RegistrationComponent', () => {
   		});
 	});
 
+	describe('Invalid number of players', () => {
+		it('should update message to say information on roster size', () => {
+			component.players[0] = 'trunks';
+			component.players[1] = 'tien';
+			component.players[2] = 'yamcha';
+			component.registerContestants();
+    			expect(component.message).toEqual('Roster can only be 2, 4, or 8 players');
+  		});
+	});
+
 });
