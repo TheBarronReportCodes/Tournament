@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   */
   registerContestants() {
 	try {
-		for (let player in this.players) {
+ 		for (let player in this.players) {
 			if (this.players[player].trim() == '') {
 				continue;
 			} 

@@ -4,11 +4,13 @@
 <form (ngSubmit)="completeRound()"> 
 		<input type="radio"
        	       	       name="matchOne"
-               	       [(ngModel)]="matchOne[0]">
+               	       value="matchOne[0]"
+		       (click)="setMatchOneWinner(matchOne[0])">
 		<label for="matchOne[0]">{{ matchOne[0] }}</label>
 		<input type="radio"
        	       	       name="matchOne"
-               	       [(ngModel)]="matchOne[1]">
+               	       value="matchOne[1]"
+		       (click)="setMatchOneWinner(matchOne[1])">
 		<label for="matchOne[1]">{{ matchOne[1] }}</label>
 		<br>
 	<button type="submit">Complete Round</button>
