@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   constructor(private rosterService: RosterService) { }
 
   ngOnInit(): void {
-	this.players = ['test', 'new', '','', '', '', '', '']; 
+	this.players = ['', '', '','', '', '', '', '']; 
 	this.message = null;
   }
 

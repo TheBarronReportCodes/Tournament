@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistrationComponent } from './registration.component';
+import { RosterService } from '../../services/roster.service';
+import { FormsModule } from '@angular/forms';
 
 describe('RegistrationComponent', () => {
   let component: RegistrationComponent;
@@ -8,7 +10,8 @@ describe('RegistrationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistrationComponent ]
+      declarations: [ RegistrationComponent ],
+      providers: [ RosterService ]
     })
     .compileComponents();
   }));
@@ -22,4 +25,9 @@ describe('RegistrationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+    it('should load players on init', () => {
+    expect(component.players.length).toEqual(8);
+  });
+
 });
