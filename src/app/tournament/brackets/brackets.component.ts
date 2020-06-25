@@ -16,11 +16,11 @@ export class BracketsComponent implements OnInit {
   ngOnInit(): void {
 	this.players = this.rosterService.getContestants();
 	this.message = null;
-	this.matchOne = [this.players[0], this.players[2]];
+	this.matchOne = [this.players[0], this.players[1]];
   }
 
-  radioChangeHandler (event: any) {
-	this.message = event.target.value;
+  completeRound() {
+	this.message = this.matchOne;
   }
 
 }
