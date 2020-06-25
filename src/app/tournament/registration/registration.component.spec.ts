@@ -79,4 +79,20 @@ describe('RegistrationComponent', () => {
   		});
 	});
 
+	describe('Successful registration', () => {
+		it('should return a message with the full roster of eight contestants', () => {
+			component.players[0] = 'naruto';
+			component.players[1] = 'sasuke';
+			component.players[2] = 'sakura';
+			component.players[3] = 'neji';
+			component.players[4] = 'hinata';
+			component.players[5] = 'gaara';
+			component.players[6] = 'shikamaru';
+			component.players[7] = 'shino';
+			component.registerContestants();
+    			expect(component.message).toEqual('naruto,sasuke,sakura,neji,hinata,gaara,shikamaru,shino');
+  		});
+
+	});
+
 });
