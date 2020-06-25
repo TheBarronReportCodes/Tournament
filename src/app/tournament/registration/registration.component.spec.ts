@@ -50,6 +50,13 @@ describe('RegistrationComponent', () => {
 			component.registerContestants();
     			expect(component.message).toEqual('player is duplicate');
   		});
+
+		it('should update message to say player is duplicate with empty strings in between', () => {
+			component.players[0] = 'VeGeta';
+			component.players[8] = 'vEgEtA';
+			component.registerContestants();
+    			expect(component.message).toEqual('player is duplicate');
+  		});
 	});
 
 });
