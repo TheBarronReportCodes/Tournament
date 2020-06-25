@@ -1,12 +1,17 @@
 <h1>Round: 1</h1>
 <p>{{ players }}</p>
 <h4>Match 1</h4>
-<input type="radio"
-       name="matchOne"
-       value="players[0]">
-<label for="players[0]">{{ players[0] }}</label>
-<input type="radio"
-       name="matchOne"
-       value="players[1]">
-<label for="players[1]">{{ players[1] }}</label>
+<form> 
+	<div *ngFor="let contestants of matchOne">
+		<input type="radio"
+       	       	       name="matchOne"
+               	       value="matchOne[contestants]"
+		       (change)="radioChangeHandler($event)">
+		<label for="matchOne[contestants]">{{ matchOne[contestants] }}</label>
+		<br>
+	</div>
+	<p><span>Selected: </span><b>{{ message }}</b></p>
+	<button type="submit">Complete Round</button>
+</form>
+<div *ngIf="message">{{ message }}</div>
 
