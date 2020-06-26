@@ -11,7 +11,7 @@ export class RosterService {
 	this.theContestants = [];
   }
 
-  /* returns the list of registered contestants' names an
+  /* returns the list of registered contestants' names
   */
   getContestants(): String[] {
 	return this.theContestants;	
