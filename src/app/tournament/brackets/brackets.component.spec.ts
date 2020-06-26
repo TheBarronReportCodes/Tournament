@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 describe('BracketsComponent', () => {
   let component: BracketsComponent;
+  let service: RosterService;
   let fixture: ComponentFixture<BracketsComponent>;
 
   beforeEach(async(() => {
@@ -21,6 +22,7 @@ describe('BracketsComponent', () => {
     fixture = TestBed.createComponent(BracketsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+service = TestBed.inject(RosterService);
   });
 
 	describe('Constructor and initialization', () => {
@@ -35,6 +37,32 @@ describe('BracketsComponent', () => {
 	});
 
 	describe('Set Matches', () => {
+  		it('should run setMatches()', () => {	
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			var result = function () {
+				component.setMatches();
+			}
+    			expect(result).toBeTruthy();
+  		});
+
+  		it('should create four matches with eight contestants', () => {	
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+    			expect(component.matches.length).toEqual(4);
+  		});
 	});
 
 	describe('Complete Round', () => {
