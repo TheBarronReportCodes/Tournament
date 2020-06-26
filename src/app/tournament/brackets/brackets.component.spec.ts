@@ -20,18 +20,23 @@ describe('BracketsComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(BracketsComponent);
+    service = TestBed.inject(RosterService);
     component = fixture.componentInstance;
     fixture.detectChanges();
-service = TestBed.inject(RosterService);
+    
   });
 
 	describe('Constructor and initialization', () => {
-  		it('should create', () => {
+  		it('should create component', () => {
     			expect(component).toBeTruthy();
   		});
 
     		it('should load message field as null', () => {
     			expect(component.message).toEqual(null);
+  		});
+
+    		it('should load matches field as empty array', () => {
+    			expect(component.matches).toEqual([]);
   		});
 
 	});
@@ -52,7 +57,7 @@ service = TestBed.inject(RosterService);
     			expect(result).toBeTruthy();
   		});
 
-  		it('should create four matches with eight contestants', () => {	
+  		it('should create four matches given eight contestants', () => {	
 			service.addContestant('Kim Possible');
 			service.addContestant('Ron Stoppable');
 			service.addContestant('Lilo');
@@ -61,7 +66,9 @@ service = TestBed.inject(RosterService);
 			service.addContestant('Door');
 			service.addContestant('Richard Mayhew');
 			service.addContestant('Jessica');
-    			expect(component.matches.length).toEqual(4);
+			component.setMatches();
+
+    			expect(component.getMatches().length).toEqual(4);
   		});
 	});
 

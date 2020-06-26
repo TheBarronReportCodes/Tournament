@@ -15,6 +15,7 @@ export class BracketsComponent implements OnInit {
   constructor(private rosterService: RosterService) { }
 
   ngOnInit(): void {
+	this.matches = [];
 	this.setMatches();
 	this.message = null;
   }
@@ -41,6 +42,10 @@ export class BracketsComponent implements OnInit {
 			new Match(this.rosterService.getContestants()[6], this.rosterService.getContestants()[7])
 			];
 	} 
+  }
+
+  getMatches(): Array<Match> {
+	return this.matches;
   }
 
   completeRound() {
