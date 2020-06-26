@@ -40,11 +40,13 @@ export class BracketsComponent implements OnInit {
   }
 
   completeRound() {
+/*
 	var winnersCircle = [];
 	for(var match in this.matches){
 		winnersCircle.push(this.matches[match].getWinner());
 	}
 	this.message = winnersCircle.toString();
+*/
   }
 
 }
