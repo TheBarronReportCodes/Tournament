@@ -2,6 +2,7 @@
 	<h1>{{ round }}</h1>
 </div>
 
+<div *ngIf="!message">
 <div class="form-group">
 	<form (ngSubmit)="completeRound()"> 
 		<div *ngFor="let match of matches; index as contestantSpot">
@@ -20,5 +21,6 @@
 		</div>
 	<button type="submit">Complete Round</button>
 	</form>
+</div>
 </div>
 <div *ngIf="message">{{ message }}</div>

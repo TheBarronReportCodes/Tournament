@@ -16,9 +16,10 @@ export class BracketsComponent implements OnInit {
 
   ngOnInit(): void {
 	this.matches = [];
+	this.round = null;
 	this.setMatches();
 	this.message = null;
-	this.round = null;
+	
   }
 
   setMatches() {
@@ -42,7 +43,9 @@ export class BracketsComponent implements OnInit {
 			new Match(this.rosterService.getContestants()[4], this.rosterService.getContestants()[5]),
 			new Match(this.rosterService.getContestants()[6], this.rosterService.getContestants()[7])
 			];
-	} 
+	} else {
+		this.message = "Winner: " + this.rosterService.getContestants()[0]; 
+	}
   }
 
   getMatches(): Array<Match> {
@@ -55,13 +58,6 @@ export class BracketsComponent implements OnInit {
 		this.rosterService.addContestant(this.matches[match].getWinner());
 	}
 	this.setMatches();
-/*
-	var winnersCircle = [];
-	for(var match in this.matches){
-		winnersCircle.push(this.matches[match].getWinner());
-	}
-	this.message = winnersCircle.toString();
-*/
   }
 
 }
