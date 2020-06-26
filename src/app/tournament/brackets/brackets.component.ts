@@ -18,6 +18,7 @@ export class BracketsComponent implements OnInit {
 	this.matches = [];
 	this.setMatches();
 	this.message = null;
+	this.round = null;
   }
 
   setMatches() {

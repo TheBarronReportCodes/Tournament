@@ -40,6 +40,9 @@ describe('BracketsComponent', () => {
     			expect(component.matches).toEqual([]);
   		});
 
+    		it('should load round field as null', () => {
+    			expect(component.round).toEqual(null);
+  		});
 	});
 
 	describe('Set Matches', () => {
@@ -255,5 +258,35 @@ describe('BracketsComponent', () => {
     			expect(round3).toEqual([new Match('Kim Possible','Jessica')
 						]);	
   		});
+	});
+
+	describe('Round update', () => {
+		it('should change values of round variable after each completeRound call (round 1, 2, and 3)', () => {
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+
+    			expect(component.round).toEqual('Round 1');
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
+			component.getMatches()[2].setWinner(component.getMatches()[2].secondContestant);
+			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
+
+			component.completeRound();
+			expect(component.round).toEqual('Round 2');
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].secondContestant);
+
+			component.completeRound();
+			expect(component.round).toEqual('Round 3');
+		});	
 	});
 });
