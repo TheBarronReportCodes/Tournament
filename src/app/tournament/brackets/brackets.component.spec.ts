@@ -91,7 +91,48 @@ describe('BracketsComponent', () => {
 						new Match('Richard Mayhew', 'Jessica')
 						]);
   		});
+
+  		it('should create two matches given four contestants', () => {	
+			service.addContestant('Ex Machina');
+			service.addContestant('Lady Bird');
+			service.addContestant('Tiger King');
+			service.addContestant('The Social Network');
+			component.setMatches();
+
+    			expect(component.getMatches().length).toEqual(2);
+  		});
+
+
+  		it('should create two matches given four contestants with correct values for matches', () => {	
+			service.addContestant('Ex Machina');
+			service.addContestant('Lady Bird');
+			service.addContestant('Tiger King');
+			service.addContestant('The Social Network');
+			component.setMatches();
+			var result = component.getMatches();
+
+    			expect(result).toEqual([new Match('Ex Machina', 'Lady Bird'), 
+						new Match('Tiger King', 'The Social Network')
+						]);
+  		});
+
+  		it('should create one match given two contestants', () => {	
+			service.addContestant('Up');
+			service.addContestant('Toy Story');
+			component.setMatches();
+
+    			expect(component.getMatches().length).toEqual(1);
+  		});
+
+
+  		it('should create one match given two contestants with correct values for matches', () => {	
+			service.addContestant('Up');
+			service.addContestant('Toy Story');
+			component.setMatches();
+			var result = component.getMatches();
+
+    			expect(result).toEqual([new Match('Up', 'Toy Story')
+						]);
+  		});
 	});
-
-
 });
