@@ -1,11 +1,5 @@
-<div *ngIf="matches.length == 4">
-	<h1>Round: 1</h1>
-</div>
-<div *ngIf="matches.length == 2">
-	<h1>Round: 2</h1>
-</div>
-<div *ngIf="matches.length == 1">
-	<h1>Round: 3</h1>
+<div *ngIf="round">
+	<h1>{{ round }}</h1>
 </div>
 
 <div class="form-group">

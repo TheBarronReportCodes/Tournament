@@ -34,11 +34,11 @@ describe('BracketsComponent', () => {
 
 	});
 
-describe('Set Matches', () => {
-});
+	describe('Set Matches', () => {
+	});
 
-describe('Complete Round', () => {
-});
+	describe('Complete Round', () => {
+	});
 
 
 });
