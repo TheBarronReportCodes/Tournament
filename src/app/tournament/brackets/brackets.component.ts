@@ -53,11 +53,16 @@ export class BracketsComponent implements OnInit {
   }
 
   completeRound() {
-	this.rosterService.getContestants().length = 0;
-	for(var match in this.matches){
-		this.rosterService.addContestant(this.matches[match].getWinner());
+	try {
+		this.rosterService.getContestants().length = 0;
+		for(var match in this.matches){
+			this.rosterService.addContestant(this.matches[match].getWinner());
+		}
+		this.setMatches();
 	}
-	this.setMatches();
+	catch(err) {
+		this.message = err;
+	}
   }
 
 }
