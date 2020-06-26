@@ -137,7 +137,30 @@ describe('BracketsComponent', () => {
 	});
 
 	describe('Complete Round', () => {
-		  it('should change match length from 4 to 2', () => {	
+		  it('should run completeRound', () => {
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+			expect(component.getMatches().length).toEqual(4);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
+			component.getMatches()[2].setWinner(component.getMatches()[2].secondContestant);
+			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
+			var result = function () {
+				component.completeRound();
+			}
+			
+			expect(result).toBeTruthy();
+		  });
+
+		  it('should change match length from 4 to 2 to 1', () => {	
 			service.addContestant('Kim Possible');
 			service.addContestant('Ron Stoppable');
 			service.addContestant('Lilo');
@@ -155,7 +178,13 @@ describe('BracketsComponent', () => {
 			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
 
 			component.completeRound();
-			expect(component.getMatches().length).toEqual(2);	
+			expect(component.getMatches().length).toEqual(2);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].secondContestant);
+
+			component.completeRound();
+			expect(component.getMatches().length).toEqual(1);	
   		});
 	});
 });
