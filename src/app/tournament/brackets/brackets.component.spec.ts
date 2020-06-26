@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BracketsComponent } from './brackets.component';
 import { RosterService } from '../../services/roster.service';
+import { Match } from '../../model/match';
 import { FormsModule } from '@angular/forms';
 
 describe('BracketsComponent', () => {
@@ -70,9 +71,26 @@ describe('BracketsComponent', () => {
 
     			expect(component.getMatches().length).toEqual(4);
   		});
-	});
 
-	describe('Complete Round', () => {
+
+  		it('should create four matches given eight contestants with correct values for matches', () => {	
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+			var result = component.getMatches();
+
+    			expect(result).toEqual([new Match('Kim Possible', 'Ron Stoppable'), 
+						new Match('Lilo', 'Stitch'), 
+						new Match('Marquis De Carabas', 'Door'), 
+						new Match('Richard Mayhew', 'Jessica')
+						]);
+  		});
 	});
 
 
