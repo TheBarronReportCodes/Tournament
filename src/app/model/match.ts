@@ -1,5 +1,16 @@
 export class Match {
 
-constructor(public firstContestant: String,
-	     public secondContestant: String) {}
+public winner: String;
+
+constructor(public firstContestant: String, public secondContestant: String) {
+	this.winner = '';
+}
+  setWinner(winner: String) {
+	this.winner = winner;
+  }
+
+  getWinner() {
+	return this.winner;
+  }
+
 }
