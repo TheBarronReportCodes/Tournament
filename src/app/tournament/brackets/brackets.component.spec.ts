@@ -186,5 +186,74 @@ describe('BracketsComponent', () => {
 			component.completeRound();
 			expect(component.getMatches().length).toEqual(1);	
   		});
+
+		  it('should change getContestants array after each complete round call (round 1, 2, and 3)', () => {	
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+
+			var starters = service.getContestants();
+    			expect(starters).toEqual(['Kim Possible', 'Ron Stoppable', 'Lilo', 'Stitch', 'Marquis De Carabas', 'Door', 'Richard Mayhew', 'Jessica']);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
+			component.getMatches()[2].setWinner(component.getMatches()[2].secondContestant);
+			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
+
+			component.completeRound();
+			var round1Winners = service.getContestants();
+    			expect(round1Winners).toEqual(['Kim Possible', 'Lilo', 'Door', 'Jessica']);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].secondContestant);
+
+			component.completeRound();
+			var round2Winners = service.getContestants();
+    			expect(round2Winners).toEqual(['Kim Possible','Jessica']);	
+  		});
+
+		  it('should change values of matches after each completeRound call (round 1, 2, and 3)', () => {	
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+
+			var round1 = component.getMatches();
+    			expect(round1).toEqual([new Match('Kim Possible', 'Ron Stoppable'), 
+						new Match('Lilo', 'Stitch'), 
+						new Match('Marquis De Carabas', 'Door'), 
+						new Match('Richard Mayhew', 'Jessica')
+						]);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
+			component.getMatches()[2].setWinner(component.getMatches()[2].secondContestant);
+			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
+
+			component.completeRound();
+			var round2 = component.getMatches();
+    			expect(round2).toEqual([new Match('Kim Possible', 'Lilo'), 
+						new Match('Door', 'Jessica')
+						]);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].secondContestant);
+
+			component.completeRound();
+			var round3 = component.getMatches();
+    			expect(round3).toEqual([new Match('Kim Possible','Jessica')
+						]);	
+  		});
 	});
 });
