@@ -19,9 +19,11 @@ export class BracketsComponent implements OnInit {
 	this.round = 1;
 	this.setMatches();
 	this.message = null;
-	
+
   }
 
+  /* sets the number of matches in a round based on the number of contestants
+  */
   setMatches() {
 	let length = this.rosterService.getContestants().length;
   	if (length == 2) {
@@ -41,14 +43,18 @@ export class BracketsComponent implements OnInit {
 			new Match(this.rosterService.getContestants()[6], this.rosterService.getContestants()[7])
 			];
 	} else {
-		this.message = "Winner: " + this.rosterService.getContestants()[0]; 
+		this.message = "Winner: " + this.rosterService.getContestants()[0];
 	}
   }
 
+  /* returns a list of all the matches in the current round
+  */
   getMatches(): Array<Match> {
 	return this.matches;
   }
 
+  /* saves the winners from the matches in the current round
+  */
   completeRound() {
 	try {
 		this.rosterService.getContestants().length = 0;
@@ -63,8 +69,10 @@ export class BracketsComponent implements OnInit {
 	}
   }
 
+  /* Changes number of what round the user should be on
+  */
   nextRound() {
-	if (this.message) {	
+	if (this.message) {
 		return this.round;
 	}
 	this.round++;

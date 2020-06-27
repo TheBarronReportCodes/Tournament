@@ -68,7 +68,7 @@ describe('MatchModel', () => {
 			var result3 = match3.getWinner();
 			var result4 = match4.getWinner();
 
-    			expect(result1).toEqual('Matt');
+    	expect(result1).toEqual('Matt');
 			expect(result2).toEqual('DeAndre');
 			expect(result3).toEqual('Deshaun');
 			expect(result4).toEqual('Devante');
@@ -116,6 +116,28 @@ describe('MatchModel', () => {
 			}
 
 			expect(result).toThrow('winner cannot be empty');
+		});
+	});
+
+	describe('Winner not a contestant', () => {
+		it('should not allow empty winner', () => {
+			var match1 = new Match('Julio', 'Matt');
+			var result = function () {
+				match1.setWinner('Ladanian Tomlinson');
+			}
+
+			expect(result).toThrow('winner must be a contestant in the match');
+		});
+
+		it('should not allow empty names test 2', () => {
+			var match1 = new Match('Julio', 'Matt');
+			var match2 = new Match('DeAndre','Kyler');
+			var result = function () {
+				match1.setWinner(match1.firstContestant);
+				match2.setWinner('Sean Taylor');
+			}
+
+			expect(result).toThrow('winner must be a contestant in the match');
 		});
 	});
 });
