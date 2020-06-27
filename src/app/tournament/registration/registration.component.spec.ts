@@ -120,7 +120,23 @@ describe('RegistrationComponent', () => {
 			component.registerContestants();
     			expect(component.message).toEqual('chunin,jonin');
   		});
-
 	});
+
+  describe('Autofills', () => {
+    it('should return two preset names in the player', () => {
+      component.autofillTwo();
+          expect(component.players).toEqual(['Ash', 'Pikachu', '','', '', '', '', '']);
+      });
+
+    it('should return four preset names in the player', () => {
+      component.autofillFour();
+          expect(component.players).toEqual(['Madara', 'Orochimaru', 'Itachi','Haku', '', '', '', '']);
+      });
+
+    it('should return eight preset names in the player', () => {
+      component.autofillEight();
+          expect(component.players).toEqual(['Naruto', 'Sasuke', 'Sakura','Kakashi', 'Jaraiya', 'Tsunade', 'Minato', 'Boruto']);
+      });
+  });
 
 });

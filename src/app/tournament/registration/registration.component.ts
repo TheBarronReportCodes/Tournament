@@ -49,10 +49,10 @@ export class RegistrationComponent implements OnInit {
   /* Presets the name of the first four players to be registered
   */
   autofillFour() {
-    this.players[0] = 'Madara'
-    this.players[1] = 'Orochimaru'
-    this.players[2] = 'Itachi'
-    this.players[3] = 'Haku'
+    this.players[0] = 'Madara';
+    this.players[1] = 'Orochimaru';
+    this.players[2] = 'Itachi';
+    this.players[3] = 'Haku';
   }
 
   /* Presets the name of the first eight players to be registered
@@ -64,8 +64,8 @@ export class RegistrationComponent implements OnInit {
     this.players[3] = 'Kakashi';
     this.players[4] = 'Jaraiya';
     this.players[5] = 'Tsunade';
-    this.players[6] = 'Minato'
-    this.players[7] = 'Boruto'
+    this.players[6] = 'Minato';
+    this.players[7] = 'Boruto';
   }
 
   /* tracks players by index number to deal with primitive array
