@@ -9,7 +9,7 @@ import { RosterService } from '../../services/roster.service';
 export class RegistrationComponent implements OnInit {
 
   public players: String[];
-  public message;
+  public message: String;
 
   constructor(private rosterService: RosterService) { }
 
@@ -39,9 +39,34 @@ export class RegistrationComponent implements OnInit {
 	}
   }
 
-  autofillTwo() {}
-  autofillFour() {}
-  autofillEight() {}
+  /* Presets the name of the first two players to be registered
+  */
+  autofillTwo() {
+    this.players[0] = 'Ash';
+    this.players[1] = 'Pikachu';
+  }
+
+  /* Presets the name of the first four players to be registered
+  */
+  autofillFour() {
+    this.players[0] = 'Madara'
+    this.players[1] = 'Orochimaru'
+    this.players[2] = 'Itachi'
+    this.players[3] = 'Haku'
+  }
+
+  /* Presets the name of the first eight players to be registered
+  */
+  autofillEight() {
+    this.players[0] = 'Naruto';
+    this.players[1] = 'Sasuke';
+    this.players[2] = 'Sakura';
+    this.players[3] = 'Kakashi';
+    this.players[4] = 'Jaraiya';
+    this.players[5] = 'Tsunade';
+    this.players[6] = 'Minato'
+    this.players[7] = 'Boruto'
+  }
 
   /* tracks players by index number to deal with primitive array
   */
