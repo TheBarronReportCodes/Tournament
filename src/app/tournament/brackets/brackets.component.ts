@@ -9,14 +9,14 @@ import { Match } from '../../model/match';
 })
 export class BracketsComponent implements OnInit {
   public matches: Array<Match>;
-  public round: String;
+  public round: number;
   public message: String;
 
   constructor(private rosterService: RosterService) { }
 
   ngOnInit(): void {
 	this.matches = [];
-	this.round = null;
+	this.round = 1;
 	this.setMatches();
 	this.message = null;
 	
@@ -25,18 +25,15 @@ export class BracketsComponent implements OnInit {
   setMatches() {
 	let length = this.rosterService.getContestants().length;
   	if (length == 2) {
-		this.round = "Round 3";
 		this.matches = [
 			new Match(this.rosterService.getContestants()[0], this.rosterService.getContestants()[1])
 			];
 	} else if (length == 4) {
-		this.round = "Round 2";
 		this.matches = [
 			new Match(this.rosterService.getContestants()[0], this.rosterService.getContestants()[1]),
 			new Match(this.rosterService.getContestants()[2], this.rosterService.getContestants()[3])
 			];
 	} else if (length == 8) {
-		this.round = "Round 1";
 		this.matches = [
 			new Match(this.rosterService.getContestants()[0], this.rosterService.getContestants()[1]),
 			new Match(this.rosterService.getContestants()[2], this.rosterService.getContestants()[3]),
@@ -59,10 +56,18 @@ export class BracketsComponent implements OnInit {
 			this.rosterService.addContestant(this.matches[match].getWinner());
 		}
 		this.setMatches();
+		this.nextRound();
 	}
 	catch(err) {
 		this.message = err;
 	}
+  }
+
+  nextRound() {
+	if (this.message) {	
+		return this.round;
+	}
+	this.round++;
   }
 
 }

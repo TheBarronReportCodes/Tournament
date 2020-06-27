@@ -1,26 +1,26 @@
-<div *ngIf="round">
-	<h1>{{ round }}</h1>
-</div>
+<h1>Round {{ round }}</h1>
 
 <div *ngIf="!message">
-<div class="form-group">
-	<form (ngSubmit)="completeRound()"> 
-		<div *ngFor="let match of matches; index as contestantSpot">
-			<h4>Match {{ contestantSpot + 1 }}</h4>
-			<input type="radio" 
-			       name="match{{ contestantSpot }}"
-			       value="matches[contestantSpot].firstContestant"
-			       (click)="match.setWinner(matches[contestantSpot].firstContestant)">
-			<label>{{ matches[contestantSpot].firstContestant  }}</label>
-			<input type="radio" 
-			       name="match{{ contestantSpot }}"
-			       value="matches[contestantSpot].secondContestant"
-			       (click)="match.setWinner(matches[contestantSpot].secondContestant)">
-			<label>{{ matches[contestantSpot].secondContestant }}</label>
-			<br>
-		</div>
-	<button type="submit">Complete Round</button>
-	</form>
+	<div class="form-group">
+		<form (ngSubmit)="completeRound()"> 
+			<div *ngFor="let match of matches; index as contestantSpot">
+				<h4>Match {{ contestantSpot + 1 }}</h4>
+				<input type="radio" 
+			       		name="match{{ contestantSpot }}"
+			       		value="matches[contestantSpot].firstContestant"
+			       		(click)="match.setWinner(matches[contestantSpot].firstContestant)">
+				<label>{{ matches[contestantSpot].firstContestant  }}</label>
+				<input type="radio" 
+			       		name="match{{ contestantSpot }}"
+			       		value="matches[contestantSpot].secondContestant"
+			       		(click)="match.setWinner(matches[contestantSpot].secondContestant)">
+				<label>{{ matches[contestantSpot].secondContestant }}</label>
+				<br>
+			</div>
+		<button type="submit">Complete Round</button>
+		</form>
+	</div>
 </div>
+<div *ngIf="message">
+	<b>{{ message }}</b>
 </div>
-<div *ngIf="message">{{ message }}</div>
