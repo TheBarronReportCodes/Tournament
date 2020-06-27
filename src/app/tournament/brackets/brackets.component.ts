@@ -44,6 +44,7 @@ export class BracketsComponent implements OnInit {
 			];
 	} else {
 		this.message = "Winner: " + this.rosterService.getContestants()[0];
+    this.rosterService.getContestants().length = 0;
 	}
   }
 

@@ -19,4 +19,4 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule { }
-export const routingComponents = [HelloComponent, RegistrationComponent, BracketsComponent] 
+export const routingComponents = [HelloComponent, RegistrationComponent, BracketsComponent]

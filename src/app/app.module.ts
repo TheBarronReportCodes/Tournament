@@ -15,8 +15,8 @@ import { RosterService } from './services/roster.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [RosterService],
   bootstrap: [AppComponent]
