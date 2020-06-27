@@ -40,8 +40,8 @@ describe('BracketsComponent', () => {
     			expect(component.matches).toEqual([]);
   		});
 
-    		it('should load round field as null', () => {
-    			expect(component.round).toEqual(null);
+    		it('should load round field as 1', () => {
+    			expect(component.round).toEqual(1);
   		});
 	});
 
@@ -261,7 +261,7 @@ describe('BracketsComponent', () => {
 	});
 
 	describe('Round update', () => {
-		it('should change values of round variable after each completeRound call (round 1, 2, and 3)', () => {
+		it('should change values of round variable after each completeRound call (round 1, 2, and 3) but not after the third call', () => {
 			service.addContestant('Kim Possible');
 			service.addContestant('Ron Stoppable');
 			service.addContestant('Lilo');
@@ -272,7 +272,7 @@ describe('BracketsComponent', () => {
 			service.addContestant('Jessica');
 			component.setMatches();
 
-    			expect(component.round).toEqual('Round 1');
+    			expect(component.round).toEqual(1);
 
 			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
 			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
@@ -280,13 +280,18 @@ describe('BracketsComponent', () => {
 			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
 
 			component.completeRound();
-			expect(component.round).toEqual('Round 2');
+			expect(component.round).toEqual(2);
 
 			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
 			component.getMatches()[1].setWinner(component.getMatches()[1].secondContestant);
 
 			component.completeRound();
-			expect(component.round).toEqual('Round 3');
+			expect(component.round).toEqual(3);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+
+			component.completeRound();
+			expect(component.round).toEqual(3);
 		});	
 	});
 
