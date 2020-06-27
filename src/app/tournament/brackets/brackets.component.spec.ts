@@ -289,4 +289,60 @@ describe('BracketsComponent', () => {
 			expect(component.round).toEqual('Round 3');
 		});	
 	});
+
+	describe('Messages (Error and Winner)', () => {
+		it('should change values of message to say thrown error for when an empty string is entered when adding contestant', () => {
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+
+    			expect(component.message).toEqual(null);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
+			component.getMatches()[2].setWinner(component.getMatches()[2].secondContestant);
+
+			component.completeRound();
+			expect(component.message).toEqual('player is empty');
+		});
+
+		it('should display the winner after the third completeRound call. Should be null until then', () => {
+			service.addContestant('Kim Possible');
+			service.addContestant('Ron Stoppable');
+			service.addContestant('Lilo');
+			service.addContestant('Stitch');
+			service.addContestant('Marquis De Carabas');
+			service.addContestant('Door');
+			service.addContestant('Richard Mayhew');
+			service.addContestant('Jessica');
+			component.setMatches();
+
+    			expect(component.message).toEqual(null);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].firstContestant);
+			component.getMatches()[2].setWinner(component.getMatches()[2].secondContestant);
+			component.getMatches()[3].setWinner(component.getMatches()[3].secondContestant);
+
+			component.completeRound();
+			expect(component.message).toEqual(null);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+			component.getMatches()[1].setWinner(component.getMatches()[1].secondContestant);
+
+			component.completeRound();
+			expect(component.message).toEqual(null);
+
+			component.getMatches()[0].setWinner(component.getMatches()[0].firstContestant);
+
+			component.completeRound();
+			expect(component.message).toEqual('Winner: Kim Possible');
+		});	
+	});
 });
