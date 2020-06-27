@@ -260,6 +260,31 @@ describe('BracketsComponent', () => {
   		});
 	});
 
+	describe('Next Round', () => {
+		it('should increase round except for when message exists', () => {
+			expect(component.round).toEqual(1);
+			expect(component.message).toEqual(null);
+
+			component.nextRound();
+			expect(component.round).toEqual(2);
+			expect(component.message).toEqual(null);
+
+			component.nextRound();
+			expect(component.round).toEqual(3);
+			expect(component.message).toEqual(null);
+
+			component.nextRound();
+			expect(component.round).toEqual(4);
+			expect(component.message).toEqual(null);
+
+			component.message = 'message'
+			component.nextRound();
+			expect(component.round).toEqual(4);
+			expect(component.message).toEqual('message');
+		});
+		
+	});
+
 	describe('Round update', () => {
 		it('should change values of round variable after each completeRound call (round 1, 2, and 3) but not after the third call', () => {
 			service.addContestant('Kim Possible');
@@ -292,7 +317,8 @@ describe('BracketsComponent', () => {
 
 			component.completeRound();
 			expect(component.round).toEqual(3);
-		});	
+		});
+		
 	});
 
 	describe('Messages (Error and Winner)', () => {
